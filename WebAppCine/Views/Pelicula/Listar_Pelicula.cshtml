@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebAppCine.Models.Pelicula>
+
+@{
+    ViewBag.Title = "Películas";
+}
+
+<h2>Películas</h2>
+
+<p>
+    @Html.ActionLink("Agregar película", "Agregar_Pelicula")
+</p>
+<table class="table">
+    <tr class="headings">
+        <th class="column-title">Código</th>
+        <th class="column-title">Imagen</th>
+        <th class="column-title">Nombre</th>
+        <th class="column-title">Duracion</th>
+        <th class="column-title">Clasificación</th>
+        <th class="column-title">Género</th>
+        <th class="column-title">Formato</th>
+        <th class="column-title">Director</th>
+        <th class="column-title">Opciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pelicula_id)
+            </td>
+            <td>
+                <img class="" style="width:100px;" src="@item.imagen" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.duracion) min
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClasificacionPelicula.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GeneroPelicula.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormatoPelicula.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DirectorPelicula.nombre) @Html.DisplayFor(modelItem => item.DirectorPelicula.apellido)
+            </td>
+
+            <td>
+                @Html.ActionLink("Editar", "Editar_Pelicula", new { id = item.pelicula_id }) |
+                @Html.ActionLink("Detalle", "Detalle_Pelicula", new { id = item.pelicula_id }) |
+                @Html.ActionLink("Eliminar", "Eliminar_Pelicula", new { id = item.pelicula_id })
+            </td>
+        </tr>
+    }
+
+</table>

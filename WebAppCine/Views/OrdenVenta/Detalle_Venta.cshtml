@@ -1,0 +1,99 @@
+﻿@model WebAppCine.Models.OrdenVenta
+
+@{
+    ViewBag.Title = "Detalle del ticket";
+}
+
+<h2>Detalle del ticket</h2>
+
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.orden_venta_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.orden_venta_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo_reserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo_reserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.asiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.asiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fila)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fila)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClienteOrdenVenta.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClienteOrdenVenta.nombre) @Html.DisplayFor(model => model.ClienteOrdenVenta.apellido_paterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpleadoOrdenVenta.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpleadoOrdenVenta.nombre) @Html.DisplayFor(model => model.EmpleadoOrdenVenta.apellido_paterno)
+        </dd>
+
+        <dt>
+            Día de la función
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuncionOrdenVenta.fecha_funcion)
+        </dd>
+
+        <dt>
+            Pelicula
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuncionOrdenVenta.PeliculaFuncion.nombre)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar_Venta", new {  id = Model.orden_venta_id  }) |
+    @Html.ActionLink("Regresar", "Listar_Venta")
+</p>

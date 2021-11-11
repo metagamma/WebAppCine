@@ -1,0 +1,58 @@
+﻿@model WebAppCine.Models.Pelicula
+
+@{
+    ViewBag.Title = "Detalle película";
+}
+
+<h2>Detalle película</h2>
+
+<div>
+    <h4>Pelicula</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pelicula_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pelicula_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sinopsis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sinopsis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.duracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.duracion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar_Pelicula", new {  id = Model.pelicula_id }) |
+    @Html.ActionLink("Regresar", "Listar_Pelicula")
+</p>

@@ -1,0 +1,146 @@
+﻿@model IEnumerable<WebAppCine.Models.Funcion>
+
+@{
+    ViewBag.Title = "Funciones";
+}
+
+@using (Html.BeginForm())
+{
+
+    <div class="col-md-4">
+        <label>Fecha:</label>
+        <fieldset>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="col-md-11 xdisplay_inputx form-group has-feedback">
+                        <input type="text" class="form-control has-feedback-left" id="single_cal1" name="fecha" placeholder="Ingrese Fecha" aria-describedby="inputSuccess2Status">
+                        <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="true"></span>
+                        <span id="inputSuccess2Status" class="sr-only">(success)</span>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        @*<input type="text" class="form-control" required="required">*@
+    </div>
+    <div class="col-md-4 form-group">
+        <label>Local: </label>
+        @Html.DropDownList("local", (SelectList)ViewBag.SEDE, new { @class = "form-control" })
+        @*<select id="heard" style="" class="form-control">
+                <option>Choose option</option>
+                <option>Option one</option>
+                <option>Option two</option>
+                <option>Option three</option>
+                <option>Option four</option>
+            </select>*@
+
+    </div>
+    <div class="col-md-2">
+        <br />
+        <button type="submit" class="btn btn-success" style="float:left">Consultar</button>
+    </div>
+}
+<br />
+<table class="table table-striped jambo_table bulk_action">
+    <tr class="headings">
+        <th class="column-title">Imágen</th>
+        <th class="column-title">Película</th>
+        <th class="column-title">Sala</th>
+        <th class="column-title">Fecha</th>
+        <th class="column-title">H.Inicio</th>
+        <th class="column-title">H.Fin</th>
+        <th>Reservar</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><img class="" style="width:100px;" src="@item.PeliculaFuncion.imagen" /></td>
+            <td class="even pointer">@Html.DisplayFor(modelItem => item.PeliculaFuncion.nombre)</td>
+            <td class="odd pointer">@Html.DisplayFor(modelItem => item.SedeFuncion.sede_id)</td>
+            <td class="odd pointer">@Html.DisplayFor(modelItem => item.fecha_funcion)</td>
+            <td class="even pointer">@Html.DisplayFor(modelItem => item.hora_inicio)</td>
+            <td class="odd pointer">@Html.DisplayFor(modelItem => item.hora_fin)</td>
+            @*<td><a href="#" class="btn btn-success" data-toggle="modal" data-target="#fm-boleta" >Reservar</a></td>*@
+            <td>@Html.ActionLink("Reservar", "agregarOrdenVenta","OrdenVenta", new { id = item.funcion_id }, new { @class = "btn btn-success" })</td>
+        </tr>
+    }
+
+</table>
+
+<div class="modal fade" id="fm-boleta" tabindex="-1" role="dialog" aria-labelledby="fm-modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:1000px;">
+        <form id="frmDetalleBoleta" action="" method="post" accept-charset="UTF-8">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:antiquewhite">
+                    <h5 class="modal-title">Detalle de la compra</h5>
+                    <button class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <!--Modal Body-->
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h3>Pasteleria Dulce Gusto S.A</h3>
+                            <div class="col-md-2">
+                                <img src="~/Imagenes/P0001.jpg" style="width:50px; height:50px;" />
+                            </div>
+                            <div class="col-md-7">
+                                <p>
+                                    Oficina Principal: Av. del ejercito Nr 456 Miraflores Lima PE <br />
+                                    Telf. Lima 56-152-32  Prov. 748-9856<br />
+                                    Punto de Emision: Los Duraznos 789<br />
+                                    Urv. Santa María, SJL,Lima,Perú<br />
+                                    Correo electrónico: <strong>dulcegusto@gmail.com</strong><br />
+                                    Página Web: <a>www.dulcegusto.com.pe</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div id="dv-nrobol">
+                                <h4 class="bol-center">R.U.C 45896587421</h4>
+                                <h3 class="bol-center">BOLETA DE VENTA <br />ELECTRÓNICA</h3>
+                                <input type="text" value="B031-8956587" class="form-control bol-center" disabled />
+                            </div>
+                            <table class="table table-bordered table-condensed" style="margin-top:5px;">
+                                <tr>
+                                    <td class="bol-center">Fecha Emisión</td>
+                                    <td class="bol-center">Fecha Vencimiento</td>
+                                </tr>
+                                <tr>
+                                    <td class="bol-center" data-codigo="@DateTime.Now.ToShortDateString()" id="codfecha">@DateTime.Now.ToShortDateString()</td>
+                                    <td class="bol-center">@DateTime.Now.AddDays(30).ToShortDateString()</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <table>
+                                <tr>
+                                    <td style="width:120px;">Código cliente:</td>
+                                    <th>C0005 </th>
+                                </tr>
+                                <tr>
+                                    <td>Nombre cliente:</td>
+                                    <th>CHRISTIAN FELIPE ROJAS ONUR</th>
+                                </tr>
+                                <tr>
+                                    <td>Dirección:</td>
+                                    <th>MZ E LT 8 AL. ESTACIÓN SAN CARLOS 458, SAN JUAN DE LURIGANCHO,LIMA,LIMA</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <table class="table table-responsive" id="tbl-detalleboleta">
+                            <tbody id="divDatos"></tbody>
+                        </table>
+                    </div>
+                    <!--END Modal Body-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <!-- <input type="submit" class="btn btn-success" value="Aceptar" onclick="$('#mfrmeditaremp').submit();"> -->
+                        <input type="submit" class="btn btn-success" value="Aceptar" form="mfrmeditaremp">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

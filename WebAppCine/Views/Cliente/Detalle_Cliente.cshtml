@@ -1,0 +1,74 @@
+﻿@model WebAppCine.Models.Cliente
+
+@{
+    ViewBag.Title = "Detalle cliente";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Código:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente_id)
+        </dd>
+
+        <dt>
+            DNI:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dni)
+        </dd>
+
+        <dt>
+            Nombre:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            Apellidos:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido_paterno) @Html.DisplayFor(model => model.apellido_materno)
+        </dd>
+
+        <dt>
+            Fecha de nacimiento:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_nacimiento)
+        </dd>
+
+        <dt>
+            Correo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            Tarjeta:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tarjeta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar_Cliente", new {  id = Model.cliente_id  }) |
+    @Html.ActionLink("Regresar", "Listar_Cliente")
+</p>

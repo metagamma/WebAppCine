@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebAppCine.Models.OrdenVenta>
+
+@{
+    ViewBag.Title = "Tickets";
+}
+
+<h2>Tickets</h2>
+
+<p>
+    @Html.ActionLink("Crear ticket", "Agregar_Venta")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.orden_venta_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo_reserva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.asiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fila)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClienteOrdenVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpleadoOrdenVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuncionOrdenVenta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.orden_venta_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo_reserva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.asiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fila)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClienteOrdenVenta.nombre) @Html.DisplayFor(modelItem => item.ClienteOrdenVenta.apellido_paterno) DNI: @Html.DisplayFor(modelItem => item.ClienteOrdenVenta.dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpleadoOrdenVenta.nombre) @Html.DisplayFor(modelItem => item.EmpleadoOrdenVenta.apellido_paterno)
+        </td>
+        <td>
+         @Html.DisplayFor(modelItem => item.FuncionOrdenVenta.fecha_funcion)  Hora: @Html.DisplayFor(modelItem => item.FuncionOrdenVenta.hora_inicio) - @Html.DisplayFor(modelItem => item.FuncionOrdenVenta.hora_fin)
+        </td>
+
+
+        <td>
+            @Html.ActionLink("Editar", "Editar_Venta", new {  id=item.orden_venta_id  }) |
+            @Html.ActionLink("Detalle", "Detalle_Venta", new {  id=item.orden_venta_id }) |
+            @Html.ActionLink("Eliminar", "Eliminar_Venta", new {  id=item.orden_venta_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebAppCine.Models.Cliente>
+
+@{
+    ViewBag.Title = "Listar cliente";
+}
+
+<h2>Clientes</h2>
+
+<p>
+    @Html.ActionLink("Agregar cliente", "Agregar_Cliente")
+</p>
+<table class="table">
+    <tr class="headings">
+        <th class="column-title">Código</th>
+        <th class="column-title">DNI</th>
+        <th class="column-title">Nombre</th>
+        <th class="column-title">Apellidos</th>
+        <th class="column-title">Fecha de nacimiento</th>
+        <th class="column-title">Correo</th>
+        <th class="column-title">Tarjeta</th>
+        <th class="column-title">Opciones</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dni)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apellido_paterno) @Html.DisplayFor(modelItem => item.apellido_materno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_nacimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tarjeta)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar_Cliente", new {  id=item.cliente_id  }) |
+            @Html.ActionLink("Detalle", "Detalle_Cliente", new {  id=item.cliente_id }) |
+            @Html.ActionLink("Eliminar", "Eliminar_Cliente", new {  id=item.cliente_id })
+        </td>
+    </tr>
+}
+
+</table>

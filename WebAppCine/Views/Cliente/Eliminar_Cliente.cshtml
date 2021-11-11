@@ -1,0 +1,96 @@
+﻿@model WebAppCine.Models.Cliente
+
+@{
+    ViewBag.Title = "Eliminar cliente";
+}
+
+<h2>Eliminar cliente</h2>
+
+<h3>¿Está seguro que desea eliminar a este cliente?</h3>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dni)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido_paterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido_paterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.apellido_materno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.apellido_materno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_nacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_nacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tarjeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cvv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cvv)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+            @Html.ActionLink("Regresar", "Listar_Cliente")
+        </div>
+    }
+</div>
